@@ -7,17 +7,20 @@ namespace MvcMovie.Controllers
     {
         //
         // GET: /MyController/
-        public string Index()
+        public IActionResult Index()
         {
-            return "This is lazy action . . . meh . . .";
+            //return "This is lazy action . . . meh . . .";
+            return View();
         }
 
         //
         // GET: /MyController/Sparta/
-        public string Welcome(string name, int ID = 1)
+        public IActionResult Welcome(string name, int numTimes = 1)
         {
-            //return HtmlEncoder.Default.Encode($"What up {name}, NumNums is: {numTimes}");
-            return HtmlEncoder.Default.Encode($"Greetings mortal {name}, ID is: {ID}");
+            ViewData["Message"] = "Hello " + name;
+            ViewData["NumTimes"] = numTimes;
+
+            return View();
         }
     }
 }
